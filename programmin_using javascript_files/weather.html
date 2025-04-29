@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./weather.css">
+
+</head>
+
+<body>
+    <div class="app-container">
+        <h1>
+            Weather App
+        </h1>
+        <input type="text" id="city" placeholder="Enter city name" />
+        <button id="getWeather">
+            Get Weather
+        </button>
+        <div id="weather-info">
+            <h2 id="city-name">
+            </h2>
+            <p id="weather-description">
+            </p>
+            <p id="temperature">
+            </p>
+            <p id="humidity">
+            </p>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    let btn = document.getElementById("getWeather")
+    //let city = document.getElementById("city")
+    //let apiKey = "174f28833894ea28516c60d4cfb244de"
+
+    btn.addEventListener("click", () => {
+        console.log("hello world!")
+        console.log("city is", city.value)
+        functWeather(city.value)
+    })
+
+    const functWeather = (() => {
+        let city = document.getElementById("city")
+        let apiKey = "174f28833894ea28516c60d4cfb244de"
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q= ${city} & appid=${apiKey}& units=metric`
+         //method: "GET"
+         
+         //console.log("api")
+
+    ).then(async(data) =>{
+        data= await data.json()
+        console.log(data)
+    }).catch((err =>{
+        console.log(err)
+    }))
+    })
+
+
+</script>
+
+</html>

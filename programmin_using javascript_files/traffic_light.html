@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-div {
+            height: 400px;
+            width: 100px;
+            border-radius: 10px;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .light {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-div">
+        <div id="red" class="red light"></div>
+        <div id="yellow" class="yello light"></div>
+        <div id="green" class="green light"></div>
+        <button id="start">Start</button>
+
+        <button id="stop">Stop</button>
+
+    </div>
+
+    <script>
+
+        let red = document.getElementById("red")
+        let yellow = document.getElementById("yellow")
+        let green = document.getElementById("green")
+
+        function changeColor(id, color) {
+            let light = document.getElementById(id)
+            if (light.previousElementSibling) {
+                light.previousElementSibling.style.backgroundColor = "grey"
+            }
+            light.style.backgroundColor = color;
+        }
+        function changeLight() {
+            
+            changeColor("red", "grey")
+            changeColor("yellow", "grey")
+            changeColor("green", "grey")
+            setTimeout(function () {
+                changeColor("red", "red")
+            }, 0)
+
+            setTimeout(function () {
+                changeColor("yellow", "yellow")
+            }, 2000)
+            setTimeout(function () {
+                changeColor("green", "green")
+            }, 4000)
+
+
+        }
+
+
+
+
+
+
+
+        /* red.style.backgroundColor = "gray";
+             green.style.backgroundColor = "gray";
+             yellow.style.backgroundColor = "gray";
+     
+             setTimeout(function(){
+             red.style.backgroundColor = "red";
+         }, 2000)
+     
+         setTimeout(function(){
+             red.style.backgroundColor = "gray";
+             yellow.style.backgroundColor = "yellow";
+         },4000)
+         setTimeout(function(){
+             yellow.style.backgroundColor = "gray";
+             green.style.backgroundColor = "green";
+         },6000)
+         setTimeout(function(){
+             green.style.backgroundColor = "gray";
+         },8000)
+         
+         } */
+
+
+        let interval = null;
+        let startButton = document.getElementById("start");
+        startButton.addEventListener("click", function () {
+            changeLight();
+            interval = setInterval(function () {
+                changeLight();
+            }, 6000);
+
+        });
+
+        let stopButton = document.getElementById("stop");
+        stopButton.addEventListener("click", function () {
+            clearInterval(interval)
+            changeColor("red", "grey");
+            changeColor("yellow", "grey");
+            changeColor("green", "grey");
+            setTimeout(function () {
+                changeColor("green" , "grey");
+            },1000);
+
+        });
+
+    </script>
+
+</body>
+
+</html>

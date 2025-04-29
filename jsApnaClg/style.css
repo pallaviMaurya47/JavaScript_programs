@@ -1,0 +1,30 @@
+.box{
+    border: 2px solid black;
+    color: white;
+    background-color: olive;
+    height: 79px;
+    width: 99px;
+    margin: 4px;
+    text-align: center;
+}
+
+.old-class{
+    color: yellow;
+
+    size: 80px;
+}
+
+.new-class{
+    background-color: red;
+    height: 200px;
+}
+
+.light{
+    background-color:white;
+    color: black;
+}
+
+.dark{
+    background-color:black;
+    color: white;
+}
