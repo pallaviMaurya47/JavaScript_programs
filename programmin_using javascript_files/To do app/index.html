@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+
+<body>
+    <div class="header">
+        <div id="keep">
+            <p>Keep</p>
+            <img src="notelogo.jpeg" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <div class="input">
+            <input id="input" name="input" placeholder="Enter your note">
+            <button>Enter</button>
+        </div>
+        <div>
+            <ul id="content"></ul>
+        </div>
+
+        <!-- <div class="delbtn">
+            todo=items
+            <button id="delbtn">Delete all</button>
+        </div> -->
+    </div>
+    
+
+    <script>
+        let input = document.getElementById("input");
+        let content = document.getElementById("content");
+        let btn = document.querySelector("button")
+
+        // let delbtn =document.querySelector("#delbtn")
+        // let arr=[];
+        let arr = JSON.parse(localStorage.getItem('arr')) || [];
+
+        btn.addEventListener("click",addTask )
+        function renderTask  ()  {
+            content.innerHTML =``
+            let arr = JSON.parse(localStorage.getItem('arr')) || [];
+            console.log("rendering start")
+            arr.forEach(task => {
+                let div= document.createElement("div");
+                div.className="newdataDiv"
+                div.innerHTML=`
+                <li class="todo-item">${task.text}</li>
+                <button id="${task.id}" class="deleteBtn">Delete</button>
+                `
+                // console.log("todo item is...")
+                content.appendChild(div);
+                // console.log(div);
+
+             });
+             console.log("foreach tasks")
+            let setItem = localStorage.setItem('arr',JSON.stringify(arr));
+            console.log("setted item to be")
+            let buttons =document.querySelectorAll(".deleteBtn");
+            buttons.forEach((button)=>{
+                let id=button.getAttribute("id")
+                button.addEventListener("click",function(){
+                    deleteByid(id);
+                })
+            })
+        };
+
+
+        
+        function addTask(){
+            let arr = JSON.parse(localStorage.getItem('arr')) || [];
+
+            console.log("work is continue..")
+            var taskText = input.value.trim();
+            if(taskText !==''){
+                var newTask = {
+                    text: taskText,
+                    completed: false
+                }
+
+            }
+
+            arr.push(newTask);
+            let setItem = localStorage.setItem('arr',JSON.stringify(arr));
+            console.log("the set item is")
+            renderTask();
+            input.value=`` ;
+
+         }
+
+        function deleteByid(id){
+            let tasks=localStorage.getItem('arr')
+            // tasks=JSON.parse(tasks)
+            // console.log(tasks)
+            let list=tasks.filter((task) => {
+                task.id !==id })
+            let setItem = localStorage.setItem(list);
+  
+        }
+
+    </script>
+</body>
+
+</html>

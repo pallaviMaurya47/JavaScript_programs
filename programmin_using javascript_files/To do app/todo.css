@@ -1,0 +1,75 @@
+.container {
+    margin: 9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    margin: 0;
+    padding: 0px;
+    background-color: yellow;
+    height: 2.5rem;
+    border-color: rgb(149, 128, 6) solid 5px;
+}
+img {
+    height: 1.5rem;
+}
+
+#keep {
+    width: 2.5rem;
+    padding-left: 15px;
+    display: flex;
+    border-color: black solid 2px;
+    align-items: center;
+    line-height: 0.8rem;
+}
+
+p{
+    font-size: 19px;
+}
+button {
+    background-color: darkgreen;
+    color: white;
+    border-radius: 0.5rem;
+    line-height: 25px ;
+    width: 60px;
+    font-size: 19px;
+}
+
+input {
+    height: 25px;
+    border-radius: 0.5rem;
+}
+
+#content{
+    color: purple;
+}
+ 
+#delbtn{
+    background-color: red;
+    align-items: center;
+    justify-content: center;
+    line-height: 20px;
+    padding: 2px;
+    width: 99px;
+}
+
+.deleteBtn{
+    background-color: rgb(255, 221, 177);
+    display: inline;
+    background-color: red;
+    width: 80px;
+    height: 26px;
+    margin: 1px;
+    align-items: right;
+}
+
+.newdataDiv{
+    display: flex;
+    gap: 30px;
+}
+
+
+
